@@ -1,0 +1,27 @@
+<div class="alert alert-danger" role="alert" *ngIf="isError"
+     ngbPopover="{{popOverDescription}}" triggers="mouseenter:mouseleave" popoverTitle="Opis błędu">
+  <strong>Błąd!</strong> {{errMessage}}
+</div>
+
+<div class="form-group">
+  <label for="serialNumberPic">Zdjęcie numeru seryjnego</label>
+  <input #file type="file" id="serialNumberPic"
+         placeholder="Zdjęcie numeru seryjnego" class="form-control"
+         (change)="onChange($event, file.files)">
+  <img [src]="imgURL" height="40" *ngIf="imgURL">
+</div>
+<div class="form-group">
+  <button (click)="onUpload()" type="submit"
+          class="btn btn-primary btn-block">Generuj numer</button>
+</div>
+<div class="form-group">
+  <button (click)="test()" type="submit"
+          class="btn btn-primary btn-block">Test</button>
+</div>
+<div *ngIf="serialNumber">
+  <snc-serial-number-save></snc-serial-number-save>
+</div>
+<div class="d-flex justify-content-center" *ngIf="loading">
+  <div class="spinner-border text-primary" role="status">
+  </div>
+</div>

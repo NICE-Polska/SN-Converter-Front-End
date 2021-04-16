@@ -1,0 +1,55 @@
+<form #f="ngForm" (ngSubmit)="save(f.value)">
+  <div class="form-group">
+    <label for="customerName">Klient</label>
+    <input type="text" id="customerName"
+           placeholder="Nazwa firmy" class="form-control" [(ngModel)]="customerName" name="customerName">
+  </div>
+  <div class="form-group">
+    <label for="idax">Numer Axapta</label>
+    <input type="text" id="idax"
+           placeholder="idax" class="form-control" [(ngModel)]="idax" name="idax">
+  </div>
+  <div class="form-group">
+    <label for="deviceName">Nazwa urządzenia</label>
+    <input type="text" id="deviceName"
+           placeholder="Nazwa urządzenia" class="form-control" [(ngModel)]="deviceName" name="deviceName">
+  </div>
+  <div class="form-group">
+    <label for="serialNumber">Numer seryjny urządzenia</label>
+    <input type="text" id="serialNumber"
+           placeholder="Numer seryjny" class="form-control" [(ngModel)]="serialNumber" name="serialNumber">
+  </div>
+  <div class="form-group">
+    <label for="vatId">Numer faktury</label>
+    <input type="text" id="vatId"
+           placeholder="Numer" class="form-control" [(ngModel)]="vatId" name="vatId">
+  </div>
+  <div class="form-group">
+    <label for="dateOfShipmentStart">Data wysyłki od</label>
+    <input type="date" id="dateOfShipmentStart"
+           placeholder="Data" class="form-control" [(ngModel)]="dateOfShipmentStart" name="dateOfShipmentStart">
+  </div>
+  <div class="form-group">
+    <label for="dateOfShipmentEnd">Data wysyłki do</label>
+    <input type="date" id="dateOfShipmentEnd"
+           placeholder="Data" class="form-control" [(ngModel)]="dateOfShipmentEnd" name="dateOfShipmentEnd">
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary btn-block">Zapisz</button>
+  </div>
+</form>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{modalHeaderText}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>{{modalMessage}}</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Ok</button>
+  </div>
+</ng-template>

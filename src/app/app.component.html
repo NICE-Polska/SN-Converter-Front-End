@@ -1,12 +1,15 @@
-<snc-navbar></snc-navbar>
 <div class="container">
+  <snc-navbar></snc-navbar>
   <div class="row">
     <div class="col-md-3">
-      <snc-search></snc-search>
-    </div>
-    <div class="col-md-9">
       <router-outlet></router-outlet>
     </div>
+    <div class="col-md-9">
+      <snc-search-result>
+
+      </snc-search-result>
+    </div>
   </div>
+  <snc-footer></snc-footer>
 </div>
-<snc-footer></snc-footer>
+

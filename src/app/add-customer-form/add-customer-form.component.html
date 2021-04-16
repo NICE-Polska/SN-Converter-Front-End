@@ -1,0 +1,30 @@
+<form #f="ngForm" (ngSubmit)="save(f.value, content)">
+  <div class="form-group">
+    <label for="name">Klient</label>
+    <input type="text" id="name"
+           placeholder="Nazwa firmy" class="form-control" [(ngModel)]="name" name="name">
+  </div>
+  <div class="form-group">
+    <label for="idax">Numer Axapta</label>
+    <input type="text" id="idax"
+           placeholder="idax" class="form-control" [(ngModel)]="idax" name="idax">
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary btn-block">Zapisz</button>
+  </div>
+</form>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{modalHeaderText}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>{{modalMessage}}</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Ok</button>
+  </div>
+</ng-template>

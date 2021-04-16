@@ -17,11 +17,11 @@
           Opcje
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Dodaj numer</a>
+          <a [routerLink]="['/add-number']" class="dropdown-item" href="#">Dodaj numer</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Dodaj klienta</a>
+          <a [routerLink]="['/add-customer']" class="dropdown-item" href="#">Dodaj klienta</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Wyszukaj</a>
+          <a [routerLink]="['/search-form']" class="dropdown-item" href="#">Wyszukaj</a>
         </div>
       </li>
     </ul>
