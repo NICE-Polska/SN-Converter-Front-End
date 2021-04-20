@@ -8,12 +8,13 @@ import {Observable} from 'rxjs';
 export class SearchFormService {
 
   baseApiUrl = 'http://localhost:8080';
+  searchResults: DeviceRootObject = {} as DeviceRootObject;
 
   constructor(private http: HttpClient) { }
 
-  getDevices(filter, page): Observable<any> {
+  getDevices(filter, page): Observable<DeviceRootObject> {
     // tslint:disable-next-line:max-line-length
-    return this.http.get(this.baseApiUrl + '/devices?filter=' + filter + '&page=' + page); //TODO zamienic any na typ zwracany we wszystkich serwisach
+    return this.http.get<DeviceRootObject>(this.baseApiUrl + '/devices?filter=' + filter + '&page=' + page); //TODO zamienic any na typ zwracany we wszystkich serwisach
   }
 }
 

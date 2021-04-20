@@ -12,4 +12,7 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getDate(): number {
+    return Date.now();
+  }
 }

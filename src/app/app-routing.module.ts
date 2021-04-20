@@ -4,13 +4,15 @@ import {AddCustomerFormComponent} from './add-customer-form/add-customer-form.co
 import {SearchFormComponent} from './search-form/search-form.component';
 import {SerialNumberGenerateComponent} from './serial-number-generate/serial-number-generate.component';
 import {HomeComponent} from './home/home.component';
+import {SearchResultComponent} from './search-result/search-result.component';
 
 const routes: Routes = [
-  {path: '', component: SerialNumberGenerateComponent},
+  {path: '', component: SearchFormComponent},
   {path: 'add-customer', component: AddCustomerFormComponent},
   {path: 'add-customer', component: AddCustomerFormComponent},
   {path: 'search-form', component: SearchFormComponent},
-  {path: 'add-number', component: SerialNumberGenerateComponent}
+  {path: 'add-number', component: SerialNumberGenerateComponent},
+  {path: 'search-result', component: SearchResultComponent}
 ];
 
 @NgModule({
