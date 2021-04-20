@@ -1,4 +1,4 @@
-<table class="table table-responsive-sm table-striped table-hover" *ngIf="visible">
+<table class="table table-responsive-sm table-striped table-hover">
   <thead>
   <tr>
     <th scope="col">#</th>
@@ -11,33 +11,15 @@
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <th scope="row">1</th>
-    <td>Hopp</td>
-    <td>452597</td>
-    <td>Robson</td>
-    <td>0066</td>
-    <td>FV/1254/2021</td>
-    <td>21/03/2021</td>
-  </tr>
-  <tr>
-    <th scope="row">2</th>
-    <td>Robus</td>
-    <td>A-1445</td>
-    <td>Apom</td>
-    <td>3265</td>
-    <td>FV/125/2021</td>
-    <td>21/03/2021</td>
-  </tr>
-  <tr>
-    <th scope="row">3</th>
-    <td>Hopp</td>
-    <td>452597</td>
-    <td>Robson</td>
-    <td>0066</td>
-    <td>FV/1254/2021</td>
-    <td>21/03/2021</td>
+  <tr *ngFor="let device of searchResults.data; let i = index">
+    <th scope="row">{{i + 1}}</th>
+    <td>{{device.name}}</td>
+    <td>{{device.serialNumber}}</td>
+    <td>{{device.customer.name}}</td>
+    <td>{{device.customer.idax}}</td>
+    <td>{{device.vatId}}</td>
+    <td>{{device.dateOfShipment | date:'dd-MM-yyyy'}}</td>
   </tr>
   </tbody>
 </table>
-{{test}}
+

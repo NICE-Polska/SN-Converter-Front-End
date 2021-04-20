@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import {DeviceRootObject, SearchFormService} from '../services/search-form/search-form.service';
 import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import {SearchResultComponent} from '../search-result/search-result.component';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -10,6 +11,7 @@ import {SearchResultComponent} from '../search-result/search-result.component';
   styleUrls: ['./search-form.component.css'],
   providers: [NgbModalConfig, NgbModal]
 })
+
 export class SearchFormComponent implements OnInit {
   customerName: string;
   idax: string;
@@ -24,8 +26,8 @@ export class SearchFormComponent implements OnInit {
   modalMessage: string;
   vatId: string;
 
-  constructor(private searchFormService: SearchFormService, private searchResultComponent: SearchResultComponent,
-              config: NgbModalConfig, private modalService: NgbModal) {
+  constructor(private searchFormService: SearchFormService,
+              config: NgbModalConfig, private modalService: NgbModal, private router: Router) {
     config.backdrop = 'static';
     config.keyboard = false;
   }
@@ -33,25 +35,19 @@ export class SearchFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  save(formData) {
-    this.customerName = formData.customer;
-    this.idax = formData.idax;
-    this.deviceName = formData.device;
-    this.serialNumber = formData.serialNumber;
-    this.filter = 'idax=' + this.idax + ',' + 'customer=' + this.customerName + ',' + 'name=' + this.deviceName + ',' +
-      'serialNumber=' + this.serialNumber + ',' + 'vatId=' + this.vatId;
+  save(formData): void {
+    this.filter = 'idax%3D' + this.idax + '%2Ccustomer%3D' + this.customerName + '%2Cname%3D' + this.deviceName + '%2CserialNumber%3D'
+      + this.serialNumber + '%2CvatId%3D' + this.vatId + '%2CshipmentDateStart%3D' + this.dateOfShipmentStart + '%2CshipmentDateEnd%3D' + this.dateOfShipmentEnd;
     this.page = 1;
     this.searchFormService.getDevices(this.filter, this.page).subscribe(response => {
-      this.searchResultComponent.test = 'DUPA';
-      console.log(response);
-
+      this.searchFormService.searchResults = response;
       }
       , error => {}
       , (() => {
-        this.searchResultComponent.visible = true;
-        this.idax = '';
-        this.modalMessage = 'Klient został prawidłowo zapisany do bazy danych';
-        this.modalHeaderText = 'Sukces!';
+        this.router.navigate(['/search-result']);
+        //this.searchResultComponent.visible = true;
+        //this.modalMessage = 'Klient został prawidłowo zapisany do bazy danych';
+        //this.modalHeaderText = 'Sukces!';
         //this.modalService.open(content);
       }));
   }
